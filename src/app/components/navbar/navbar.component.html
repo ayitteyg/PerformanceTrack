@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg fixed-top nav-bg-color">
+    <div class="container-fluid">
+
+        <a class="navbar-brand">
+
+            <div>
+                <img *ngIf="!isLoggedIn" disabled src="images/user_icon.png" alt="" width="40px" height="40px" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+                <img *ngIf="isLoggedIn" src="images/user_icon.png" alt="" width="40px" height="40px" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+            </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+
+
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link disabled welcome" tabindex="-1">
+                    Welcome, {{ member_name }}
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- 
+            <div class="actions">
+                <button *ngIf="!isLoggedIn" routerLink="/login" class="btn main-btn-color text-light">
+                Sign In
+               </button>
+
+                <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-outline-danger m-2">
+                Sign Out
+                </button>
+            </div> -->
+
+
+        </div>
+    </div>
+</nav>
+
+
+
+
+<!-- <app-sidebar id="sideMenu"></app-sidebar> -->
+
+
+
+
+<!-- Sidebar Drawer -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
+    <div class="offcanvas-header main-btn-color">
+        <h5 class="offcanvas-title text-info" id="sideMenuLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body main-btn-color">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a routerLink="/"><i class="bi bi-house-door"></i> Homepage</a>
+            </li>
+
+            <li class="list-group-item">
+                <a routerLink="/member/receipts"><i class="bi bi-speedometer2"></i> My Dashboard</a>
+            </li>
+
+            <li *ngIf="user?.isCaptain" class="list-group-item">
+                <a routerLink="/attendance"><i class="bi bi-clipboard-check"></i> Mark Attendance</a>
+            </li>
+
+            <li class="list-group-item">
+                <a routerLink="/members"><i class="bi bi-people"></i> Members</a>
+            </li>
+
+
+            <li class="list-group-item text-danger">
+                <a routerLink="/logout"><i class="bi bi-lock"></i> <a class="mx-1 text-warning">Logout</a></a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,126 @@
+<app-navbar class="mt-5"></app-navbar>
+<div class="main-content-container">
+
+    <!-- Toggle Button -->
+
+    <!-- Sidebar -->
+    <div class="sidebar-container">
+        <!-- Sidebar content here -->
+        <button class="toggle-btn" (click)="toggleSidebar()">
+        <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right-circle' : 'bi-arrow-left-circle'"></i>
+       </button>
+
+
+        <div class="sidebar">
+            <div #sidebar [ngClass]="{ 'sidebar-expanded': !isCollapsed, 'sidebar-collapsed': isCollapsed }" class="sidebar"> <br><br><br>
+
+                <!-- Toggle Button -->
+                <button class="toggle-btn" (click)="toggleSidebar()">
+                    <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right-circle' : 'bi-arrow-left-circle'"></i>
+                </button>
+
+                <!-- Sidebar Menu -->
+                <ul class="list-group">
+
+                    <!--  Landing page-->
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('home')">
+                        <a>
+                            <i class="bi bi-house-fill"></i>
+                            <span *ngIf="!isCollapsed">Homepage</span>
+                        </a>
+                    </li>
+
+                    <!-- Dashboard Link -->
+
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('attn/dashboard')">
+                        <a>
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span *ngIf="!isCollapsed">Dashboard</span>
+                        </a>
+                    </li>
+
+
+
+
+                    <li *ngIf="user?.isCaptain" class="list-group-item" (click)="setActivePage('capt/dashboard')">
+                        <a>
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span *ngIf="!isCollapsed">Dashboard</span>
+                        </a>
+                    </li>
+                    <li *ngIf="user?.isSupervisor" class="list-group-item" (click)="setActivePage('Supr/dashboard')">
+                        <a>
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span *ngIf="!isCollapsed">Dashboard</span>
+                        </a>
+                    </li>
+                    <li *ngIf="user?.isManager" class="list-group-item" (click)="setActivePage('Mngr/dashboard')">
+                        <a>
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span *ngIf="!isCollapsed">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('my/sales/fuel')">
+                        <a>
+                            <i class="bi bi-fuel-pump"></i>
+                            <span *ngIf="!isCollapsed">Fuel Sales</span>
+                        </a>
+                    </li>
+
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('my/sales/shop')">
+                        <a>
+                            <i class="bi bi-cart"></i>
+                            <span *ngIf="!isCollapsed">Shop Sales</span>
+                        </a>
+                    </li>
+
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('weekly/evaluation')">
+                        <a>
+                            <i class="bi bi-calendar-check-fill"></i>
+                            <span *ngIf="!isCollapsed">Evaluation</span>
+                        </a>
+                    </li>
+
+
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('attendance/register')">
+                        <a>
+                            <i class="bi bi-calendar-check-fill"></i>
+                            <span *ngIf="!isCollapsed">Attendance</span>
+                        </a>
+                    </li>
+
+
+                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('cap/dashboard')">
+                        <a>
+                            <i class="bi bi-bar-chart-fill"></i>
+                            <span *ngIf="!isCollapsed">Cap dashboard</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="list-group-item text-danger">
+                        <a (click)="logout()"><i class="bi bi-lock-fill"></i> <a *ngIf="!isCollapsed" class="mx-1 text-warning">Logout</a></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div [ngSwitch]="activePage">
+            <app-landingpage *ngSwitchCase="'home'"></app-landingpage>
+            <app-att-dashboard *ngSwitchCase="'attn/dashboard'"></app-att-dashboard>
+            <app-fuelsales *ngSwitchCase="'my/sales/fuel'"></app-fuelsales>
+            <app-shopsales *ngSwitchCase="'my/sales/shop'"></app-shopsales>
+            <app-weeklyevaluation *ngSwitchCase="'weekly/evaluation'"></app-weeklyevaluation>
+            <app-dailyregister *ngSwitchCase="'attendance/register'"></app-dailyregister>
+            <app-cap-dashboard *ngSwitchCase="'cap/dashboard'"></app-cap-dashboard>
+        </div>
+    </div>
+
+</div>

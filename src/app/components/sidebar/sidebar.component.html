@@ -1,0 +1,25 @@
+<div [ngClass]="{ 'sidebar-expanded': !isCollapsed, 'sidebar-collapsed': isCollapsed }" class="sidebar">
+
+    <!-- Toggle Button -->
+    <button class="toggle-btn" (click)="toggleSidebar()">
+    <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right-circle' : 'bi-arrow-left-circle'"></i>
+  </button>
+
+    <!-- Sidebar Menu -->
+    <ul class="list-group">
+        <li *ngIf="user?.isCaptain" class="list-group-item">
+            <a routerLink="/attendance">
+                <i class="bi bi-check-circle"></i>
+                <span *ngIf="!isCollapsed">Mark Attendance</span>
+            </a>
+        </li>
+
+        <li class="list-group-item">
+            <a routerLink="/dashboard">
+                <i class="bi bi-speedometer2"></i>
+                <span *ngIf="!isCollapsed">Dashboard</span>
+            </a>
+        </li>
+    </ul>
+
+</div>

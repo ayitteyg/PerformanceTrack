@@ -1,0 +1,262 @@
+<br><br>
+<div class="container-fluid pt-5  main-outer" *ngIf="!loading && performanceData">
+
+    <!-- performance summary POSITION, POINTS, OVERALL SCORE-->
+    <div class="row mb-4">
+        <!-- POSITION CARD -->
+        <div class="col-lg-4 col-sm-12 mb-3">
+            <div class="col-12" data-aos="zoom-in-down" data-aos-duration="2000">
+                <div class="card shadow card0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark">Your Position: <a style="color:crimson">1ST</a> </h5>
+                        <small class="text-muted">Superstar</small>
+                        <div class="trophy-container">
+                            <img src="images/superstar.png" class="flipping-trophy" alt="Superstar Award" width="60" height="70">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POINTS CARD -->
+        <div class="col-lg-4  col-sm-12 mb-3">
+            <div class="col-12" data-aos="fade-right" data-aos-duration="4000">
+                <div class="card shadow card0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Score / <a style="color:brown">300</a></h5>
+
+                        <div style="width: 150px; height: 120px; margin: auto;">
+                            <ng-container *ngIf="getTotalRawScore() !== null; else loading">
+                                <circle-progress [percent]="getTotalRawScore()||0" [radius]="30" [outerStrokeWidth]="6" [innerStrokeWidth]="4" [outerStrokeColor]="'#ca6f1e'" [innerStrokeColor]="'#C7E896'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="''" [showSubtitle]="false"
+                                    [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                </circle-progress>
+                            </ng-container>
+
+                            <ng-template #loading>
+                                <p>Loading total score...</p>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OVERAL SCORE CARD -->
+        <div class="col-lg-4  col-sm-12">
+            <div class="col-12" data-aos="fade-up" data-aos-duration="3000">
+                <div class="card shadow card0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Overall Performance</h5>
+
+                        <div style="width: 120px; height: 120px; margin: auto;">
+                            <ng-container *ngIf="getTotalScore() !== null; else loading">
+                                <circle-progress [percent]="getTotalScore()||0" [radius]="30" [outerStrokeWidth]="6" [innerStrokeWidth]="4" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="'%'" [showSubtitle]="false"
+                                    [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                </circle-progress>
+                            </ng-container>
+
+                            <ng-template #loading>
+                                <p>Loading total score...</p>
+                            </ng-template>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FUEL PERFORMANCE /QM / CAPTAINS EVALUATION-->
+    <div class="row mb-4">
+        <!-- FUEL -->
+        <div class="col-lg-4 col-sm-12" data-aos="fade-right" data-aos-duration="3000">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card  shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title text-dark">Fuel Performance: <a style="color:crimson">/100</a> </h5>
+
+                                <button class="btn btn-sm btn-outline-primary" (click)="toggleQuarters()">
+                                    {{ showAllQuarters ? 'Hide' : 'Show' }} All Quarters
+                                    </button>
+                            </div>
+
+                            <!-- Current Quarter (Full Width) -->
+                            <div class="card border-left-primary mb-3">
+                                <div class="card-body card00">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <h6 class="text-primary mb-0">Current Quarter</h6>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="getCurrentQuarterPerformance()" [attr.aria-valuenow]="getCurrentQuarterPerformance()" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ getCurrentQuarterPerformance() }}%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other Quarters Table (Toggleable) -->
+                            <div *ngIf="showAllQuarters" class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Quarter</th>
+                                            <th class="text-end">Performance</th>
+                                            <th class="text-end">Progress</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let quarter of performanceData.quarterly_performance">
+                                            <td>{{ quarter.quarter }}</td>
+                                            <td class="text-end">{{ quarter.average }}%</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar" [class.bg-success]="quarter.average >= 75" [class.bg-warning]="quarter.average >= 50 && quarter.average < 75" [class.bg-danger]="quarter.average < 50" role="progressbar" [style.width.%]="quarter.average" [attr.aria-valuenow]="quarter.average"
+                                                        aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- QM -->
+        <div class="col-lg-4 col-sm-12">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="qm-card card shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title text-dark">QM Evaluation: <a style="color:crimson">/100</a> </h5>
+                                <button class="btn btn-sm btn-outline-primary" (click)="toggleScores()">
+                                        {{ showQmScores ? 'Hide' : 'Show' }} All scores
+                                        </button>
+                            </div>
+
+                            <!-- Current Quarter (Full Width) -->
+                            <div class="card border-left-primary mb-3">
+                                <div class="card-body card">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <h6 class="text-primary mb-0">Avg Score</h6>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="evaluationData.qtr_score" [attr.aria-valuenow]="evaluationData.qtr_score" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ evaluationData.qtr_score }}%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other Quarters Table (Toggleable) -->
+                            <div *ngIf="showQmScores" class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th class="text-end">Score</th>
+                                            <th class="text-end">Indicator</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let record of evaluationData.score_history">
+                                            <td>{{ record.date }}</td>
+                                            <td class="text-end">{{ record.score }}%</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar" [class.bg-success]="record.score >= 75" [class.bg-warning]="record.score >= 50 && record.score < 75" [class.bg-danger]="record.score < 50" role="progressbar" [style.width.%]="record.score" [attr.aria-valuenow]="record.score"
+                                                        aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CAPTAIN -->
+        <div class="col-lg-4 col-sm-12" data-aos="fade-right" data-aos-duration="3000">
+            <div class="">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="qm-card card shadow">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="card-title text-dark">Attendance & Punctuality: <a style="color:crimson">/100</a> </h5>
+                                </div>
+
+                                <!-- Current Quarter (Full Width) -->
+                                <div class="card border-left-primary mb-3">
+                                    <div class="card-body card">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4">
+                                                <h6 class="text-primary mb-0">Avg Score</h6>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="registerData?.qtr_score" [attr.aria-valuenow]="registerData?.qtr_score" aria-valuemin="0" aria-valuemax="100">
+                                                        {{ registerData?.qtr_score }}%
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- CHART-->
+    <div class="row">
+        <!-- Card 3: Daily Performance Chart -->
+        <div class="card shadow" data-aos="flip-left" data-aos-duration="3000" data-aos-easing="ease-out-cubic">
+            <div class="card-body card">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="card-title mb-0">Daily Performance trend</h5>
+                    <select class="form-select form-select-sm w-auto" [(ngModel)]="selectedYear" (change)="onYearChange()">
+                                <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+                                <!-- <option [value]="currentYear">{{ currentYear }}</option> -->
+                            </select>
+                </div>
+                <div class="chart-container">
+                    <canvas canvas baseChart [type]="barChartType" [data]="barChartData" [options]="barChartOptions"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Loading State -->
+    <div class="text-center py-5" *ngIf="loading">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>

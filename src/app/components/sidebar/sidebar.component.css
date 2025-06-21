@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+    transition: width 0.3s;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar-expanded {
+    width: 220px;
+}
+
+.sidebar-collapsed {
+    width: 70px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    text-align: right;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.list-group-item {
+    border: none;
+    background: none;
+}
+
+.list-group-item a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}

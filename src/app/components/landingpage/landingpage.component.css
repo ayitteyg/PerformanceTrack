@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.feature-card {
+    min-height: 180px;
+}
+
+.coverpage {
+    height: 600px;
+    width: 80%;
+    margin: auto;
+}
+
+.icon-container {
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.my-card {
+    height: 300px;
+}
+
+@media (max-width: 768px) {
+    .feature-card {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .icon-container {
+        margin-bottom: 10px;
+    }
+    .coverpage {
+        height: 90%;
+        width: 90%;
+        margin: auto;
+    }
+}

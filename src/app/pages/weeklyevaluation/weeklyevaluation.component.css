@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 600px;
+}
+
+.card {
+    background-color: none;
+}
+
+input {
+    text-align: center;
+}
+
+.wkly-attn-title {
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.evaluate-img {
+    width: 70%;
+}
+
+.scroll-container {
+    max-height: 500px;
+    /* Adjust height as you prefer */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    * {
+        font-size: 13px;
+    }
+    .evaluate-img {
+        margin-top: 0px;
+    }
+}

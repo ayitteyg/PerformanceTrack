@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+.actions {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.welcome {
+    color: rgba(9, 40, 48, 0.81);
+    font-family: "Bebas Neue", serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+/* Hover effects */
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Optional: Add transition for smoother hover effects */
+
+.navbar-nav .nav-link {
+    transition: all 0.3s ease;
+    padding: 5px;
+    margin-right: 16px;
+}
+
+.main-btn-color {
+    background-color: rgb(49, 75, 93) !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+.active-link {
+    color: red;
+}
+
+li {
+    list-style: none;
+}
+
+.bell {
+    margin-left: 10px;
+}
+
+.offcanvas {
+    width: 250px;
+}
+
+.list-group-item {
+    background-color: var(--main-btn-color);
+    border: none;
+}
+
+.list-group-item a {
+    color: white;
+    list-style: none;
+    text-decoration: none;
+}
+
+.nav-bg-color {
+    background-color: rgb(233, 240, 240);
+}
+
+.nav-bg-color {
+    background: linear-gradient(90deg, #FFD700 10%, #FF8C00 30%, darkgoldenrod 80%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    color: white;
+    /* Text color */
+    transition: background 0.3s ease;
+}
+
+.nav-bg-color3:hover {
+    background: linear-gradient(90deg, #FFEE58, #FF7043, #E53935);
+}
+
+@media (max-width: 768px) {
+    * {
+        font-size: 13px;
+    }
+    .card {
+        max-width: 80%;
+        margin: 10px auto;
+        margin-bottom: 20px;
+    }
+    .nav-item .badge {
+        font-size: 0.6rem;
+        transform: translate(40%, -30%);
+    }
+}
+
+
+/* WhatsApp Chatbox */
+
+.whatsapp-chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-chatbox a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-chatbox a:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-chatbox a img {
+    width: 30px;
+    height: 30px;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 80px;
+    right: 10px;
+    background-color: #25d366;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    width: 110px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.whatsapp-chatbox:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}

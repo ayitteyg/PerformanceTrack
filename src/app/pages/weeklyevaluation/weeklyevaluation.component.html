@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <img class="evaluate-img" src="images/eval.png" alt="" width="">
+    </div>
+    <div class="col-lg-6 col-sm-12" data-aos="fade-right" data-aos-duration="3000">
+        <div class="container py-0">
+            <h4 class="text-center p-2">Weekly Evaluation</h4>
+
+            <div class="wkly-attn-div scroll-container">
+                <form [formGroup]="evaluationForm" (ngSubmit)="onSubmit()">
+                    <div formArrayName="evaluations" *ngFor="let eval of evaluations.controls; let i = index" class="mb-0">
+                        <div [formGroupName]="i" class="card p-0 mb-2">
+                            <div class="row align-items-center">
+                                <!-- Label -->
+                                <div class="col-6 text-start">
+                                    <h6 class="m-auto p-2">{{ attendants[i]?.name }}</h6>
+                                </div>
+
+                                <!-- Input -->
+                                <div class="col-6">
+                                    <input type="number" formControlName="raw_score" class="form-control" placeholder="Enter score (max 7)" min="0" max="7" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success" [disabled]="!evaluationForm.valid">Submit Evaluation</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>

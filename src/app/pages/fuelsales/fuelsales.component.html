@@ -1,0 +1,82 @@
+<br>
+<div class="container mt-4 mb-5 d-flex justify-content-center" data-aos="flip-left" data-aos-duration="3000" data-aos-easing="ease-out-cubic">
+
+    <div class="fuel-sales-card p-4">
+
+
+        <div class="justify-content-center p-3">
+            <img src="images/fuel_pump_1.png" alt="" width="60px" height="70px" alt="">
+        </div>
+
+        <form class="card shadow p-4" [formGroup]="fuelSalesForm" (ngSubmit)="onSubmit()">
+            <!-- select pump -->
+            <div class="mb-4">
+                <select class="form-select text-center text-muted select-style" formControlName="pump">
+                <option value="">Select pump</option>
+                <option *ngFor="let pump of pumps" [value]="pump">
+                    {{ pump }}
+                </option>
+                </select>
+            </div>
+
+            <!-- Captain -->
+            <div class="mb-4">
+                <select class="form-select text-center select-style text-muted" formControlName="captain">
+                <option value="">Select captain</option>
+                <option *ngFor="let captain of captains" [value]="captain.id">
+                    {{ captain.name }}
+                </option>
+                </select>
+            </div>
+
+            <!-- Date -->
+            <div class="mb-4">
+                <input type="date" class="form-control text-left text-muted" formControlName="date" [max]="today" placeholder="Select date" />
+            </div>
+
+            <!-- PMS Sales -->
+            <div class="mb-4">
+                <input type="number" class="form-control text-left" formControlName="pms_sales" placeholder="Enter PMS Sales" />
+            </div>
+
+            <!-- DX Sales -->
+            <div class="mb-4">
+                <input type="number" class="form-control text-left" formControlName="dx_sales" placeholder="Enter DX Sales" />
+            </div>
+
+            <!-- VP Sales -->
+            <div class="mb-4">
+                <input type="number" class="form-control text-left" formControlName="vp_sales" placeholder="Enter VP Sales" />
+            </div>
+
+
+
+            <!-- Submit Button -->
+            <button type="button" class="btn btn-outline-secondary" [disabled]="!fuelSalesForm.valid" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                <i class="bi bi-save me-1"></i> Save Fuel Sales
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this fuel sales record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

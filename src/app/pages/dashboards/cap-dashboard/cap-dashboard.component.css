@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-outer {
+    width: 90%;
+}
+
+.card0 {
+    border-radius: 12px;
+    border-top: 5px solid rgb(202, 196, 29);
+    height: 180px;
+}
+
+.scroll-container {
+    max-height: 700px;
+    /* Adjust height as you prefer */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    * {
+        font-size: 13px;
+    }
+    .smry-table {
+        width: 100%;
+    }
+    .main-outer {
+        width: 100%;
+    }
+    .scroll-container {
+        max-height: 650px;
+        /* Adjust height as you prefer */
+        overflow-y: auto;
+        overflow-x: auto;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+    .hide-td-on-sm {
+        display: none;
+    }
+}

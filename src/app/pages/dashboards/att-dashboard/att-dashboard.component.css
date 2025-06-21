@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.chart-bar {
+    height: 300px;
+    width: 100%;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.main-outer {
+    width: 80%;
+}
+
+:host {
+    display: block;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* Progress bar styling */
+
+.progress {
+    height: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+}
+
+.progress-bar {
+    transition: width 0.6s ease;
+}
+
+
+/* Table styling */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #4e73df;
+}
+
+
+/* .table-hover tbody tr:hover {
+    background-color: rgba(78, 115, 223, 0.05);
+} */
+
+.card0 {
+    border-radius: 12px;
+    border-top: 5px solid rgb(202, 196, 29);
+    height: 180px;
+}
+
+
+/* .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.card1 {
+    border-radius: 12px;
+    border-top: 6px solid rgba(132, 255, 0, 0.412);
+}
+
+.card2 {
+    border-radius: 12px;
+    border-top: 5px solid rgb(195, 111, 32) !important;
+}
+
+.card3 {
+    border-radius: 12px;
+    border-top: 6px solid rgb(131, 134, 6) !important;
+}
+
+.qm-card-0 {
+    min-height: 260px;
+}
+
+.cap-card-0 {
+    min-height: 270px;
+}
+
+
+/* Trophy animation styles */
+
+.flipping-trophy {
+    animation: flipTrophy 2s infinite ease-in-out;
+    transform-style: preserve-3d;
+    display: inline-block;
+}
+
+@keyframes flipTrophy {
+    0% {
+        transform: perspective(500px) rotateY(0deg) translateY(0);
+    }
+    50% {
+        transform: perspective(500px) rotateY(180deg) translateY(-10px);
+    }
+    100% {
+        transform: perspective(500px) rotateY(360deg) translateY(0);
+    }
+}
+
+
+/* Optional glow effect */
+
+.flipping-trophy:hover {
+    filter: drop-shadow(0 0 8px gold);
+    animation: flipTrophy 1s infinite ease-in-out, glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px gold);
+    }
+    to {
+        filter: drop-shadow(0 0 15px gold);
+    }
+}
+
+.trophy-container {
+    display: inline-block;
+    margin: 10px;
+    perspective: 1000px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    * {
+        font-size: 13px;
+    }
+    .main-outer {
+        width: 95%;
+    }
+}

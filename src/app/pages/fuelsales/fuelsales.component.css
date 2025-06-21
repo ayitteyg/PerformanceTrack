@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* Container */
+
+.fuel-sales-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+
+/* Card Styling */
+
+.fuel-sales-card {
+    width: 100%;
+    width: 800px;
+    height: 600px;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+
+/* Labels */
+
+.select-style {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: left;
+}
+
+
+/* Inputs */
+
+.form-control {
+    text-align: center;
+    font-size: 1rem;
+    /* padding: 0.6rem 0.75rem; */
+    border-radius: 6px;
+}
+
+
+/* Dropdown Styling */
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1000;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Button */
+
+.btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    * {
+        font-size: 13px;
+    }
+    .fuel-sales-card {
+        width: 100%;
+    }
+}
