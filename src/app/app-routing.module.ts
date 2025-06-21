@@ -12,6 +12,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 
 
 const routes: Routes = [
+   { path:'', component:LoginComponent },
    { path:'login', component:LoginComponent },
    { path:'general-homepage', component:GeneralHomepageComponent},
    { path:'att-dashboard', component:AttDashboardComponent},
