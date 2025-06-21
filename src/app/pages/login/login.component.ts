@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -14,12 +14,19 @@ import { AuthService } from '../../services/auth.service';
 
 
 
-export class LoginComponent {
+export class LoginComponent implements OnInit  {
   loginForm: FormGroup;
   isSubmitted = false;
   errorMessage = '';
   // Add this property
   isLoading: boolean = false;
+  currentTime: string = '';
+
+  //typing effect
+  fullText: string = 'PERFORMANCE TRACKER';
+  displayedText: string = '';
+  currentIndex: number = 0;
+  intervalId: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,6 +40,12 @@ export class LoginComponent {
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+    ngOnInit() {
+    this.updateTime();
+    setInterval(() => this.updateTime(), 1000); // Update every second
+    this.startTyping();
   }
 
   // Getter for easy access to form fields
@@ -103,6 +116,24 @@ onSubmit() {
   });
 }
 
+updateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    this.currentTime = `${hours}:${minutes}`;
+  }
+
+
+   startTyping() {
+    this.intervalId = setInterval(() => {
+      if (this.currentIndex < this.fullText.length) {
+        this.displayedText += this.fullText[this.currentIndex];
+        this.currentIndex++;
+      } else {
+        clearInterval(this.intervalId); // Stop when complete
+      }
+    }, 150); // Speed: 150ms per letter, you can adjust this
+  }
 
 }
 

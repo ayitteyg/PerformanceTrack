@@ -9,10 +9,14 @@
 
     <div class="container mt-0"> <br> <br>
         <div class="row justify-content-center">
+            <p class="text-center text-light app-name  typing-animation" data-aos="zoom-in" data-aos-duration="2000" data-aos-easing="ease-out-cubic">{{ displayedText }}</p>
+
             <div class="col-md-6 col-sm-1">
+
+
                 <div class="card">
                     <div class="card-img-container">
-                        <img class="" src="images/user_1.png" alt="" width="60px" height="80px">
+                        <img class="fadeIn" src="images/bckgrnd.png" alt="" width="300px" height="400px">
                     </div>
                     <div class="card-body">
                         <form #formData [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -21,11 +25,11 @@
                             <!-- Username field -->
                             <div class="mb-3">
                                 <!-- <label for="username" class="form-label">Username</label> -->
-                                <div class="input-group">
+                                <div class="input-group ">
                                     <span class="input-group-text">
                                 <i class="bi bi-person"></i> <!-- Bootstrap Icons -->
                               </span>
-                                    <input type="text" placeholder="username" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': isSubmitted && formControls['username'].errors }" />
+                                    <input type="text" placeholder="contact" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': isSubmitted && formControls['username'].errors }" />
                                 </div>
 
                                 <div *ngIf="isSubmitted && formControls['username'].errors" class="invalid-feedback d-block">
@@ -77,7 +81,7 @@
             </div>
         </div>
         <div class="text-center mt-5">
-            <p>All Right Reserved ©2025, powered by ayigoTech</p>
+            <p class="text-success">All Right Reserved ©2025, powered by ayigoTech</p>
         </div>
     </div>
 
