@@ -94,6 +94,25 @@ a {
 }
 
 
+/* Custom modal width */
+
+.custom-modal {
+    max-width: 400px;
+    /* You can adjust this as you like */
+    margin: auto;
+}
+
+
+/* On extra small screens, limit modal to a smaller width */
+
+@media (max-width: 576px) {
+    .custom-modal {
+        max-width: 80%;
+        /* Take up to 90% of screen, but not full width */
+    }
+}
+
+
 /* Mobile Responsive */
 
 @media (max-width: 768px) {
@@ -102,5 +121,9 @@ a {
     }
     .fuel-sales-card {
         width: 100%;
+    }
+    .custom-modal {
+        max-width: 80%;
+        /* Take up to 90% of screen, but not full width */
     }
 }

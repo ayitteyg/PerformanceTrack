@@ -42,7 +42,7 @@
 
 
 
-                    <li *ngIf="user?.isCaptain || user?.isSupervisor || user?.isManager" class="list-group-item" (click)="setActivePage('site/dashboard')">
+                    <li *ngIf="user?.isnoRole || user?.isCaptain || user?.isSupervisor || user?.isManager" class="list-group-item" (click)="setActivePage('site/dashboard')">
                         <a>
                             <i class="bi bi-bar-chart-line"></i>
                             <span *ngIf="!isCollapsed">Dashboard</span>
@@ -63,7 +63,7 @@
                         </a>
                     </li>
 
-                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('weekly/evaluation')">
+                    <li *ngIf="user?.isSupervisor || user?.isManager" class="list-group-item" (click)="setActivePage('weekly/evaluation')">
                         <a>
                             <i class="bi bi-clipboard-check-fill"></i>
                             <span *ngIf="!isCollapsed">Evaluation</span>
