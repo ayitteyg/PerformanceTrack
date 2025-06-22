@@ -108,7 +108,7 @@ export class FuelsalesComponent implements OnInit {
         // Optionally navigate if needed
         // this.router.navigate(['/fuel-sales']);
         // Redirect to dashboard after submission
-        this.router.navigate(['/att-dashboard']);
+        this.router.navigate(['/general-homepage']);
 
       },
       error: (err) => {

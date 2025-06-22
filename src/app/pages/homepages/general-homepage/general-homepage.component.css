@@ -97,7 +97,7 @@ a {
 
 @media (max-width: 768px) {
     .sidebar-collapsed {
-        width: 50px;
+        width: 47px;
         transition: width 0.8s;
     }
     .toggle-btn {

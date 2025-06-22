@@ -61,7 +61,7 @@ export class ShopSalesComponent implements OnInit {
         this.shopSalesForm.reset(); // Reset the form after successful submission
         this.today = new Date().toISOString().split('T')[0];// Reset date to today's date if you’re using it in the form
 
-        this.router.navigate(['/att-dashboard']);
+        this.router.navigate(['general-homepage']);
       },
       error: (err) => {
         console.error('Error submitting Shop sales record:', err);
