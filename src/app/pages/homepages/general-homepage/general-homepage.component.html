@@ -42,19 +42,7 @@
 
 
 
-                    <li *ngIf="user?.isCaptain" class="list-group-item" (click)="setActivePage('capt/dashboard')">
-                        <a>
-                            <i class="bi bi-bar-chart-line"></i>
-                            <span *ngIf="!isCollapsed">Dashboard</span>
-                        </a>
-                    </li>
-                    <li *ngIf="user?.isSupervisor" class="list-group-item" (click)="setActivePage('Supr/dashboard')">
-                        <a>
-                            <i class="bi bi-bar-chart-line"></i>
-                            <span *ngIf="!isCollapsed">Dashboard</span>
-                        </a>
-                    </li>
-                    <li *ngIf="user?.isManager" class="list-group-item" (click)="setActivePage('Mngr/dashboard')">
+                    <li *ngIf="user?.isCaptain || user?.isSupervisor || user?.isManager" class="list-group-item" (click)="setActivePage('site/dashboard')">
                         <a>
                             <i class="bi bi-bar-chart-line"></i>
                             <span *ngIf="!isCollapsed">Dashboard</span>
@@ -83,22 +71,12 @@
                     </li>
 
 
-                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('attendance/register')">
+                    <li *ngIf="user?.isCaptain" class="list-group-item" (click)="setActivePage('attendance/register')">
                         <a>
                             <i class="bi bi-clock-fill"></i>
                             <span *ngIf="!isCollapsed">Attendance</span>
                         </a>
                     </li>
-
-
-                    <li *ngIf="user?.isnoRole" class="list-group-item" (click)="setActivePage('cap/dashboard')">
-                        <a>
-                            <i class="bi bi-bar-chart-fill"></i>
-                            <span *ngIf="!isCollapsed">Cap dashboard</span>
-                        </a>
-                    </li>
-
-
 
                     <li class="list-group-item text-danger">
                         <a (click)="logout()"><i class="bi bi-lock-fill"></i> <a *ngIf="!isCollapsed" class="mx-1 text-warning">Logout</a></a>
@@ -119,7 +97,7 @@
             <app-shopsales *ngSwitchCase="'my/sales/shop'"></app-shopsales>
             <app-weeklyevaluation *ngSwitchCase="'weekly/evaluation'"></app-weeklyevaluation>
             <app-dailyregister *ngSwitchCase="'attendance/register'"></app-dailyregister>
-            <app-cap-dashboard *ngSwitchCase="'cap/dashboard'"></app-cap-dashboard>
+            <app-cap-dashboard *ngSwitchCase="'site/dashboard'"></app-cap-dashboard>
         </div>
     </div>
 

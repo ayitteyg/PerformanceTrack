@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.checkAuthentication();
      AOS.init({
       duration: 1200,
       once: true  
