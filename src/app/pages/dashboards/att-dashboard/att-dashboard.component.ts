@@ -97,6 +97,10 @@ export class AttDashboardComponent {
 
   ngOnInit(): void {
     this.initializeYears();
+
+    
+    this.loadPerformanceData(); // Reload fresh data
+
     this.loadPerformanceData();
     this.loadEvaluationData();
     this.loadRegisterData();
@@ -108,8 +112,13 @@ export class AttDashboardComponent {
   }
 
   loadPerformanceData(): void {
+
+   
+
     this.loading = true;
     const user = this.authService.getUser().usid;
+    this.performanceService.clearCacheForUser(user, this.selectedYear); // first clear cache data
+
     this.performanceService.getPerformanceSummary(user, { 
       year: this.selectedYear 
     }).subscribe({
@@ -172,7 +181,7 @@ export class AttDashboardComponent {
 
   updateChartData(dailyData: any[]): void {
     this.barChartData = {
-      labels: dailyData.map(item => item.day),
+      labels: dailyData.map(item => item.date),
       datasets: [{
         data: dailyData.map(item => item.performance),
         label: 'Daily Performance trend',

@@ -120,6 +120,12 @@ export class PerformanceService {
   }
 
 
+ clearCacheForUser(userId: number, year: number): void {
+  const cacheKey = `summary_${userId}_${year}`;
+  this.cache.delete(cacheKey);
+}
+
+
    // Get user evaluation score
   getEvaluationScore(userId?: number): Observable<EvaluationScore> {
     const url = userId

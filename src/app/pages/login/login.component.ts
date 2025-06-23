@@ -82,6 +82,7 @@ onSubmit() {
         isManager: response.isManager,
         isSupervisor: response.isSupervisor,
         isnoRole: response.isnoRole,
+        job:response.job
        
         
       }));
