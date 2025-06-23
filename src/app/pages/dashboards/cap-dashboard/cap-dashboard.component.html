@@ -10,6 +10,12 @@
         </button>
 </div>
 
+<!-- Loading Spinner -->
+<div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 
 <div class="container-fluid main-outer" *ngIf="!loading && fuelSummaryData && activeDashboard === 'fuel'">
     <!-- Performance Summary -->
@@ -309,10 +315,5 @@
         </div>
     </div>
 
-    <!-- Loading Spinner -->
-    <div class="text-center py-5" *ngIf="loading">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
+
 </div>

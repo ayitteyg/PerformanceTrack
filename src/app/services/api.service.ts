@@ -26,8 +26,14 @@ export class ApiService {
 
    //get all employees
    getCaptains(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/captains/`);
+    return this.http.get(`${this.apiUrl}/captains-pump/`);
   }
+  
+
+   getCaptainsShop(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/captains-shop/`);
+  }
+
 
   //get an employee with id
   getEmployee(empId: number): Observable<any> {

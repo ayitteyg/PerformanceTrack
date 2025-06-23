@@ -42,7 +42,7 @@ export class ShopSalesComponent implements OnInit {
 
   //load captains data
   loadCaptains() {
-    this.apiService.getCaptains().subscribe({
+    this.apiService.getCaptainsShop().subscribe({
       next: (data) => {
         this.captains = data;
       },
