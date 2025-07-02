@@ -15,12 +15,15 @@
 
                 <!-- Captain -->
                 <div class="mb-4">
-                    <select class="form-select text-left text-muted select-style" formControlName="captain">
-                <option value="">Select captain</option>
-                <option *ngFor="let captain of captains" [value]="captain.id">
-                    {{ captain.name }}
-                </option>
-                </select>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label class="text-muted">Captain</mat-label>
+                        <mat-select formControlName="captain">
+                            <mat-option value="">Select captain</mat-option>
+                            <mat-option *ngFor="let captain of captains" [value]="captain.id">
+                                {{ captain.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
 
 

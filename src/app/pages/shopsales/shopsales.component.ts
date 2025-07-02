@@ -57,7 +57,7 @@ export class ShopSalesComponent implements OnInit {
   if (this.shopSalesForm.valid) {
     this.apiService.createShopSales(this.shopSalesForm.value).subscribe({
       next: (response) => {
-        this.notification.showSuccess('Shop sales record created successfully!');
+        this.notification.success('Shop sales record created successfully!');
         this.shopSalesForm.reset(); // Reset the form after successful submission
         this.today = new Date().toISOString().split('T')[0];// Reset date to today's date if you’re using it in the form
 
@@ -65,7 +65,7 @@ export class ShopSalesComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error submitting Shop sales record:', err);
-        this.notification.showError('Failed to create shop sales record. Please try again.');
+        this.notification.error('Failed to create shop sales record. Please try again.');
       }
     });
   }

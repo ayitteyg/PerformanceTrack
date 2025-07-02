@@ -24,9 +24,23 @@
                         </div>
                     </div>
 
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-success" [disabled]="!evaluationForm.valid">Submit Evaluation</button>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg" [disabled]="!evaluationForm.valid">
+                                <span *ngIf="!isSubmitting">
+                                <i class="bi bi-save me-2"></i>Save Fuel Sales
+                                </span>
+                                <span *ngIf="isSubmitting">
+                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            submtting data...
+                                </span>
+                        </button>
                     </div>
+
+                    <!-- <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success" [disabled]="!evaluationForm.valid">Submit Evaluation</button>
+                    </div> -->
                 </form>
             </div>
 

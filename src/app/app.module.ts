@@ -25,6 +25,13 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
+
+
 
 @NgModule({
   declarations: [
@@ -55,6 +62,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatTooltipModule,
     BaseChartDirective,
     MatProgressSpinnerModule,
+    MatFormField,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
     NgCircleProgressModule.forRoot({
       // Default configuration options
       radius: 60,

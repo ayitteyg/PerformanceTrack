@@ -26,6 +26,8 @@ export class WeeklyevaluationComponent implements OnInit {
     private notification: NotificationService
   ) {}
 
+   isSubmitting: boolean = false;
+
   ngOnInit(): void {
 
     //oninit config your form
@@ -61,6 +63,11 @@ export class WeeklyevaluationComponent implements OnInit {
 
   onSubmit(): void {
     if (this.evaluationForm.valid) {
+
+      if (this.isSubmitting) return;
+  
+     this.isSubmitting = true;
+
      const payload = { evaluations: this.evaluationForm.value.evaluations };
       console.log('Submitting payload:', payload);
 
@@ -69,10 +76,12 @@ export class WeeklyevaluationComponent implements OnInit {
           this.notification.success('Evaluations submitted successfully!');
           this.evaluationForm.reset();
           this.router.navigate(['/evaluations']);
+         this.isSubmitting = false;
         },
         error: (err) => {
           console.error('Error submitting evaluations:', err);
           this.notification.error('Submission failed. Please try again.');
+           this.isSubmitting = false;
         }
       });
     }

@@ -23,6 +23,8 @@ export class DailyregisterComponent implements OnInit{
     private notification: NotificationService
   ) {}
 
+  isSubmitting:boolean = false
+
   ngOnInit(): void {
 
     //oninit config your form
@@ -58,6 +60,11 @@ export class DailyregisterComponent implements OnInit{
 
   onSubmit(): void {
     if (this.registerForm.valid) {
+
+      if (this.isSubmitting) return;
+  
+     this.isSubmitting = true;
+
      const payload = { register: this.registerForm.value.register };
       console.log('Submitting payload:', payload);
 
@@ -66,10 +73,12 @@ export class DailyregisterComponent implements OnInit{
           this.notification.success('Register submitted successfully!');
           this.registerForm.reset();
           this.router.navigate(['/register']);
+          this.isSubmitting = false;
         },
         error: (err) => {
           console.error('Error submitting register:', err);
           this.notification.error('Submission failed. Please try again.');
+          this.isSubmitting = false;
         }
       });
     }

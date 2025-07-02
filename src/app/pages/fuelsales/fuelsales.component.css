@@ -151,4 +151,11 @@ a {
         max-width: 80%;
         /* Take up to 90% of screen, but not full width */
     }
+    input,
+    label {
+        font-size: 13px;
+    }
+    .my-modal {
+        max-width: 75%;
+    }
 }

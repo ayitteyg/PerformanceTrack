@@ -147,7 +147,7 @@ onSubmit() {
       );
 
       // Optional: Use Material Snackbar for a secondary confirmation
-      this.notification.showSuccess('You are being redirected...');
+      this.notification.success('You are being redirected...');
 
       // Dynamic Routing Based on Role
      this.router.navigate(['/general-homepage']);
@@ -163,7 +163,7 @@ onSubmit() {
       );
       
       // Optional: Use Material Snackbar for additional error details
-      this.notification.showError('Please try again');
+      this.notification.error('Please try again');
     },
     complete: () => {
       this.isLoading = false;
