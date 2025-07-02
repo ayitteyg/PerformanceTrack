@@ -11,31 +11,21 @@
             <!-- Form -->
             <form [formGroup]="fuelSalesForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
                 <!-- Pump Selection -->
-                <div class="mb-4">
-                    <label for="pumpSelect" class="form-label small text-muted">Pump</label>
-                    <select id="pumpSelect" class="form-select form-select-lg" formControlName="pump" [class.is-invalid]="isFieldInvalid('pump')">
-            <option value="" disabled selected>Select pump</option>
-            <option *ngFor="let pump of pumps" [value]="pump">
-              {{ pump }}
-            </option>
-          </select>
-                    <div class="invalid-feedback" *ngIf="isFieldInvalid('pump')">
-                        Please select a pump
-                    </div>
-                </div>
 
-                <!-- Captain Selection -->
+                <!-- Pump -->
                 <div class="mb-4">
-                    <label for="captainSelect" class="form-label small text-uppercase fw-bold text-muted">Captain</label>
-                    <select id="captainSelect" class="form-select form-select-lg" formControlName="captain" [class.is-invalid]="isFieldInvalid('captain')">
-                    <option value="" disabled selected>Select captain</option>
-                    <option *ngFor="let captain of captains" [value]="captain.id">
-                    {{ captain.name }}
-                    </option>
-               </select>
-                    <div class="invalid-feedback" *ngIf="isFieldInvalid('captain')">
-                        Please select a captain
-                    </div>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label class="small text-muted">Pump</mat-label>
+                        <mat-select id="pumpSelect" formControlName="pump" [class.is-invalid]="isFieldInvalid('pump')">
+                            <mat-option value="" disabled>Select pump</mat-option>
+                            <mat-option class="text-muted" *ngFor="let pump of pumps" [value]="pump">
+                                {{ pump }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="isFieldInvalid('pump')">
+                            Please select a pump
+                        </mat-error>
+                    </mat-form-field>
                 </div>
 
 
@@ -46,7 +36,7 @@
                         <mat-label class="small text-uppercase fw-bold text-muted">Captain</mat-label>
                         <mat-select formControlName="captain" [class.is-invalid]="isFieldInvalid('captain')" placeholder="Select captain">
                             <mat-option value="" disabled>Select captain</mat-option>
-                            <mat-option *ngFor="let captain of captains" [value]="captain.id">
+                            <mat-option class="text-muted" *ngFor="let captain of captains" [value]="captain.id">
                                 {{ captain.name }}
                             </mat-option>
                         </mat-select>
