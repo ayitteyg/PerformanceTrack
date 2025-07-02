@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
+   isLoading: boolean = false; // Add this line
+
   ngOnInit(): void {
      AOS.init({
       duration: 1200,

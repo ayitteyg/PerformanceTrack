@@ -1,83 +1,147 @@
-<br>
-<div class="container mt-4 mb-5 d-flex justify-content-center" data-aos="flip-left" data-aos-duration="3000" data-aos-easing="ease-out-cubic">
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light mt-5">
+    <div class="card border-0 shadow-lg rounded-4" style="width: 100%; max-width: 600px;" data-aos="fade-up" data-aos-duration="500">
+        <div class="card-body p-5">
+            <!-- Header with logo and title -->
+            <div class="text-center mb-4">
 
-    <div class="fuel-sales-card p-4">
+                <h1 class="h4 text-dark mb-2">Fuel Sales Recording</h1>
+                <p class="text-muted">Enter daily fuel sales data accurately</p>
+            </div>
 
+            <!-- Form -->
+            <form [formGroup]="fuelSalesForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+                <!-- Pump Selection -->
+                <div class="mb-4">
+                    <label for="pumpSelect" class="form-label small text-uppercase fw-bold text-muted">Pump</label>
+                    <select id="pumpSelect" class="form-select form-select-lg" formControlName="pump" [class.is-invalid]="isFieldInvalid('pump')">
+            <option value="" disabled selected>Select pump</option>
+            <option *ngFor="let pump of pumps" [value]="pump">
+              {{ pump }}
+            </option>
+          </select>
+                    <div class="invalid-feedback" *ngIf="isFieldInvalid('pump')">
+                        Please select a pump
+                    </div>
+                </div>
 
+                <!-- Captain Selection -->
+                <div class="mb-4">
+                    <label for="captainSelect" class="form-label small text-uppercase fw-bold text-muted">Captain</label>
+                    <select id="captainSelect" class="form-select form-select-lg" formControlName="captain" [class.is-invalid]="isFieldInvalid('captain')">
+            <option value="" disabled selected>Select captain</option>
+            <option *ngFor="let captain of captains" [value]="captain.id">
+              {{ captain.name }}
+            </option>
+          </select>
+                    <div class="invalid-feedback" *ngIf="isFieldInvalid('captain')">
+                        Please select a captain
+                    </div>
+                </div>
 
-        <div class="justify-content-center p-3">
-            <img src="images/fuel_pump_1.png" alt="" width="60px" height="70px" alt="">
+                <!-- Date Picker -->
+                <div class="mb-4">
+                    <label for="salesDate" class="form-label small text-uppercase fw-bold text-muted">Date</label>
+                    <input id="salesDate" type="date" class="form-control form-control-lg" formControlName="date" [max]="today" [class.is-invalid]="isFieldInvalid('date')">
+                    <div class="invalid-feedback" *ngIf="isFieldInvalid('date')">
+                        Please select a valid date
+                    </div>
+                </div>
+
+                <!-- Sales Inputs -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <label for="pmsSales" class="form-label small text-uppercase fw-bold text-muted">PMS (Liters)</label>
+                        <div class="input-group">
+                            <input id="pmsSales" type="number" class="form-control form-control-lg" formControlName="pms_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('pms_sales')">
+                            <span class="input-group-text">L</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="dxSales" class="form-label small text-uppercase fw-bold text-muted">DX (Liters)</label>
+                        <div class="input-group">
+                            <input id="dxSales" type="number" class="form-control form-control-lg" formControlName="dx_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('dx_sales')">
+                            <span class="input-group-text">L</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="vpSales" class="form-label small text-uppercase fw-bold text-muted">VP (Liters)</label>
+                        <div class="input-group">
+                            <input id="vpSales" type="number" class="form-control form-control-lg" formControlName="vp_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('vp_sales')">
+                            <span class="input-group-text">L</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="fuelSalesForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                        <span *ngIf="!isSubmitting">
+                        <i class="bi bi-save me-2"></i>Save Fuel Sales
+                        </span>
+                        <span *ngIf="isSubmitting">
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                       Saving data...
+                        </span>
+          </button>
+                </div>
+            </form>
         </div>
-
-        <p class="text-center  text-muted">Record Your Pump Fuel Sales </p>
-
-        <form class="card shadow p-4" [formGroup]="fuelSalesForm" (ngSubmit)="onSubmit()">
-            <!-- select pump -->
-            <div class="mb-4">
-                <select class="form-select text-center text-muted select-style" formControlName="pump">
-                <option value="">Select pump</option>
-                <option *ngFor="let pump of pumps" [value]="pump">
-                    {{ pump }}
-                </option>
-                </select>
-            </div>
-
-            <!-- Captain -->
-            <div class="mb-4">
-                <select class="form-select text-center select-style text-muted" formControlName="captain">
-                <option value="">Select captain</option>
-                <option *ngFor="let captain of captains" [value]="captain.id">
-                    {{ captain.name }}
-                </option>
-                </select>
-            </div>
-
-            <!-- Date -->
-            <div class="mb-4">
-                <input type="date" class="form-control text-left text-muted" formControlName="date" [max]="today" placeholder="Select date" />
-            </div>
-
-            <!-- PMS Sales -->
-            <div class="mb-4">
-                <input type="number" class="form-control text-left" formControlName="pms_sales" placeholder="Enter PMS Sales" />
-            </div>
-
-            <!-- DX Sales -->
-            <div class="mb-4">
-                <input type="number" class="form-control text-left" formControlName="dx_sales" placeholder="Enter DX Sales" />
-            </div>
-
-            <!-- VP Sales -->
-            <div class="mb-4">
-                <input type="number" class="form-control text-left" formControlName="vp_sales" placeholder="Enter VP Sales" />
-            </div>
-
-
-
-            <!-- Submit Button -->
-            <button type="button" class="btn btn-outline-secondary" [disabled]="!fuelSalesForm.valid" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                <i class="bi bi-save me-1"></i> Save Fuel Sales
-            </button>
-        </form>
     </div>
 </div>
 
 
+
+
 <!-- Confirmation Modal -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered custom-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Confirm Submission</h5>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-3">
+            <!-- Modal Header -->
+            <div class="modal-header bg-light border-0 py-4 px-4 rounded-top-3">
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded-circle me-3">
+                        <i class="bi bi-exclamation-circle-fill text-primary fs-4"></i>
+                    </div>
+                    <h5 class="modal-title fs-5 fw-semibold text-dark m-0" id="confirmModalLabel">Confirm Submission</h5>
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Are you sure you want to submit this fuel sales record?
+
+            <!-- Modal Body -->
+            <div class="modal-body px-4 py-4">
+                <p class="mb-0 text-muted">
+                    <i class="bi bi-info-circle-fill text-primary me-2"></i> Are you sure you want to submit this fuel sales record?
+                </p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
-          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+
+            <!-- Modal Footer -->
+            <div class="modal-footer border-0 bg-light rounded-bottom-3 px-4 py-3">
+                <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-2"></i> Cancel
+                </button>
+                <button type="button" class="btn btn-primary px-4" (click)="confirmSubmission()" data-bs-dismiss="modal">
+                    <i class="bi bi-check-circle me-2"></i> Confirm Submission
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" #successModal>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-body text-center p-5">
+                <div class="icon-circle bg-success bg-opacity-10 text-success mb-4 mx-auto">
+                    <i class="bi bi-check2-circle fs-2"></i>
+                </div>
+                <h3 class="h5 mb-3">Record Saved Successfully!</h3>
+                <p class="text-muted mb-4">The fuel sales data has been recorded in the system.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">
+          Continue
         </button>
             </div>
         </div>

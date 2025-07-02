@@ -1,5 +1,13 @@
 <br><br><br><br>
 
+
+<!-- Loading Spinner -->
+<div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Preparing Dashboard...</span>
+    </div>
+</div>
+
 <!-- Dashboard Switch -->
 <div class="btn-group mb-4" role="group">
     <button type="button" class="btn btn-outline-primary" [class.active]="activeDashboard === 'fuel'" (click)="switchDashboard('fuel')">
@@ -10,12 +18,6 @@
         </button>
 </div>
 
-<!-- Loading Spinner -->
-<div class="text-center py-5" *ngIf="loading">
-    <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-</div>
 
 <div class="container-fluid main-outer" *ngIf="!loading && fuelSummaryData && activeDashboard === 'fuel'">
     <!-- Performance Summary -->
@@ -172,10 +174,6 @@
     </div>
 
 </div>
-
-
-
-
 
 
 <div class="container-fluid main-outer" *ngIf="!loading && shopSummaryData && activeDashboard === 'shop'">

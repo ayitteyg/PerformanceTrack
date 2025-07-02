@@ -30,7 +30,14 @@ export class FuelsalesComponent implements OnInit {
   pumps: string[] = ['pump1', 'pump2', 'pump3','pump4']; // Example pump list
   today: string = new Date().toISOString().split('T')[0];
   captains: any[] = [];
+
+
+  isSubmitting: boolean = false;
   
+  isFieldInvalid(field: string): boolean {
+  const formField = this.fuelSalesForm.get(field);
+  return formField ? formField.invalid && (formField.dirty || formField.touched) : false;
+}
 
 
  ngOnInit() {
@@ -95,25 +102,30 @@ export class FuelsalesComponent implements OnInit {
   }
 
    confirmSubmission(): void {
+
+    // Prevent double submission
+  if (this.isSubmitting) return;
+  
+  this.isSubmitting = true;
+
   if (this.fuelSalesForm.valid) {
     this.apiService.createFuelSales(this.fuelSalesForm.value).subscribe({
       next: (response) => {
-        this.notification.showSuccess('Fuel sales record created successfully!');
-        this.fuelSalesForm.reset(); // Reset the form after successful submission
 
-        // Optionally reset the pump input display (if using separate selectedPump variable)
-        //this.selectedPump = '';
-        this.today = new Date().toISOString().split('T')[0];// Reset date to today's date if you’re using it in the form
+      this.notification.success('Record saved successfully!');
+      this.isSubmitting = false;
+      
+      // Reset form if needed
+      this.fuelSalesForm.reset();
 
-        // Optionally navigate if needed
-        // this.router.navigate(['/fuel-sales']);
-        // Redirect to dashboard after submission
-        this.router.navigate(['/general-homepage']);
+        //this.today = new Date().toISOString().split('T')[0];// Reset date to today's date if you’re using it in the form
+        //this.router.navigate(['/general-homepage']);
 
       },
       error: (err) => {
         console.error('Error submitting fuel sales record:', err);
-        this.notification.showError('Failed to create fuel sales record. Please try again.');
+        this.notification.error('Failed to save record');
+        this.isSubmitting = false;
       }
     });
   }

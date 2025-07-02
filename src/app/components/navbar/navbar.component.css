@@ -84,7 +84,7 @@ li {
 }
 
 .nav-bg-color {
-    background: linear-gradient(90deg, #FFD700 10%, #FF8C00 30%, darkgoldenrod 80%);
+    background: linear-gradient(90deg, #8f7a03 10%, #FF8C00 30%, darkgoldenrod 80%);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* Subtle shadow */
     color: white;

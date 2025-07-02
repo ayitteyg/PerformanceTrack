@@ -22,6 +22,7 @@ import { DailyregisterComponent } from './pages/dailyregister/dailyregister.comp
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CapDashboardComponent } from './pages/dashboards/cap-dashboard/cap-dashboard.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -53,6 +54,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     FormsModule,
     MatTooltipModule,
     BaseChartDirective,
+    MatProgressSpinnerModule,
     NgCircleProgressModule.forRoot({
       // Default configuration options
       radius: 60,

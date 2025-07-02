@@ -29,7 +29,7 @@
                                     <span class="input-group-text">
                                 <i class="bi bi-person"></i> <!-- Bootstrap Icons -->
                               </span>
-                                    <input type="text" placeholder="contact" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': isSubmitted && formControls['username'].errors }" />
+                                    <input type="text" placeholder="Username" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': isSubmitted && formControls['username'].errors }" />
                                 </div>
 
                                 <div *ngIf="isSubmitted && formControls['username'].errors" class="invalid-feedback d-block">
@@ -45,7 +45,7 @@
                                     <span class="input-group-text">
                                 <i class="bi bi-lock"></i> <!-- Bootstrap Icons -->
                               </span>
-                                    <input type="password" placeholder="password" class="form-control" id="password" formControlName="password" [ngClass]="{ 'is-invalid': isSubmitted && formControls['password'].errors }" />
+                                    <input type="password" placeholder="Password" class="form-control" id="password" formControlName="password" [ngClass]="{ 'is-invalid': isSubmitted && formControls['password'].errors }" />
                                 </div>
 
                                 <div *ngIf="isSubmitted && formControls['password'].errors" class="invalid-feedback d-block">

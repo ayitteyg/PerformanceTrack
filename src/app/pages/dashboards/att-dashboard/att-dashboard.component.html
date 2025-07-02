@@ -1,4 +1,12 @@
 <br><br>
+<!-- Loading State -->
+<div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <h5 class="text-muted  p-5"> Preparing Dashboard </h5>
+</div>
+
 <div class="container-fluid pt-5  main-outer" *ngIf="!loading && performanceData">
 
     <!-- performance summary POSITION, POINTS, OVERALL SCORE-->
@@ -253,10 +261,5 @@
 
 
 
-    <!-- Loading State -->
-    <div class="text-center py-5" *ngIf="loading">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
+
 </div>
