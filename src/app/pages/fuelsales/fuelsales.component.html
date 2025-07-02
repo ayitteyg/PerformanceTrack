@@ -12,7 +12,7 @@
             <form [formGroup]="fuelSalesForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
                 <!-- Pump Selection -->
                 <div class="mb-4">
-                    <label for="pumpSelect" class="form-label small text-uppercase fw-bold text-muted">Pump</label>
+                    <label for="pumpSelect" class="form-label small text-muted">Pump</label>
                     <select id="pumpSelect" class="form-select form-select-lg" formControlName="pump" [class.is-invalid]="isFieldInvalid('pump')">
             <option value="" disabled selected>Select pump</option>
             <option *ngFor="let pump of pumps" [value]="pump">
@@ -40,7 +40,7 @@
 
                 <!-- Date Picker -->
                 <div class="mb-4">
-                    <label for="salesDate" class="form-label small text-uppercase fw-bold text-muted">Date</label>
+                    <label for="salesDate" class="form-label small  text-muted">Date</label>
                     <input id="salesDate" type="date" class="form-control form-control-lg" formControlName="date" [max]="today" [class.is-invalid]="isFieldInvalid('date')">
                     <div class="invalid-feedback" *ngIf="isFieldInvalid('date')">
                         Please select a valid date
@@ -50,7 +50,7 @@
                 <!-- Sales Inputs -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
-                        <label for="pmsSales" class="form-label small text-uppercase fw-bold text-muted">PMS (Liters)</label>
+                        <label for="pmsSales" class="form-label small  text-muted">PMS (Liters)</label>
                         <div class="input-group">
                             <input id="pmsSales" type="number" class="form-control form-control-lg" formControlName="pms_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('pms_sales')">
                             <span class="input-group-text">L</span>
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="dxSales" class="form-label small text-uppercase fw-bold text-muted">DX (Liters)</label>
+                        <label for="dxSales" class="form-label small text-muted">DX (Liters)</label>
                         <div class="input-group">
                             <input id="dxSales" type="number" class="form-control form-control-lg" formControlName="dx_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('dx_sales')">
                             <span class="input-group-text">L</span>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="vpSales" class="form-label small text-uppercase fw-bold text-muted">VP (Liters)</label>
+                        <label for="vpSales" class="form-label small  text-muted">VP (Liters)</label>
                         <div class="input-group">
                             <input id="vpSales" type="number" class="form-control form-control-lg" formControlName="vp_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('vp_sales')">
                             <span class="input-group-text">L</span>

@@ -63,13 +63,13 @@ export class DailyregisterComponent implements OnInit{
 
       this.apiService.submitRegister(payload).subscribe({
         next: (response) => {
-          this.notification.showSuccess('Register submitted successfully!');
+          this.notification.success('Register submitted successfully!');
           this.registerForm.reset();
           this.router.navigate(['/register']);
         },
         error: (err) => {
           console.error('Error submitting register:', err);
-          this.notification.showError('Submission failed. Please try again.');
+          this.notification.error('Submission failed. Please try again.');
         }
       });
     }

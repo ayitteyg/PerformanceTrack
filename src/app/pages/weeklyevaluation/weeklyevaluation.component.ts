@@ -66,13 +66,13 @@ export class WeeklyevaluationComponent implements OnInit {
 
       this.apiService.submitBulkEvaluation(payload).subscribe({
         next: (response) => {
-          this.notification.showSuccess('Evaluations submitted successfully!');
+          this.notification.success('Evaluations submitted successfully!');
           this.evaluationForm.reset();
           this.router.navigate(['/evaluations']);
         },
         error: (err) => {
           console.error('Error submitting evaluations:', err);
-          this.notification.showError('Submission failed. Please try again.');
+          this.notification.error('Submission failed. Please try again.');
         }
       });
     }
