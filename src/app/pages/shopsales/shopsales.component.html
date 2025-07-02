@@ -1,49 +1,74 @@
-<div class="container mt-5 d-flex justify-content-center" data-aos="flip-left" data-aos-duration="3000" data-aos-easing="ease-out-cubic">
-
-
+<div class="container mt-5 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="500">
 
     <div class="cardd shadoww shop-card">
+        <div class="text-center">
 
-        <div class="justify-content-center p-3 img">
-            <img src="images/shop_sales.png" alt="" width="120px" height="120px" alt="">
+            <h1 class="h4 text-dark mb-2">Shop Sales Recording</h1>
+            <p class="text-muted">Enter daily shop sales data accurately</p>
         </div>
 
+        <div class="card-body card shadow pt-5">
 
-        <div class="card-body  card shadow pt-5">
-            <p class="text-center  text-muted">Record Your Shift Shop Sales </p>
             <form [formGroup]="shopSalesForm">
 
                 <!-- Captain -->
-                <div class="mb-4">
+                <div class="mb-0">
                     <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-muted">Captain</mat-label>
+                        <mat-label>Captain</mat-label>
                         <mat-select formControlName="captain">
                             <mat-option value="">Select captain</mat-option>
                             <mat-option *ngFor="let captain of captains" [value]="captain.id">
                                 {{ captain.name }}
                             </mat-option>
                         </mat-select>
+                        <mat-error *ngIf="shopSalesForm.get('captain')?.invalid && shopSalesForm.get('captain')?.touched">
+                            Please select a captain
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
-
                 <!-- Date Field -->
-                <div class="mb-3">
-                    <input type="date" class="form-control text-left text-muted" placeholder="Select Date" formControlName="date" [max]="today">
+                <div class="mb-4">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date" [max]="today">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="shopSalesForm.get('date')?.invalid && shopSalesForm.get('date')?.touched">
+                            Please select a valid date
+                        </mat-error>
+                    </mat-form-field>
                 </div>
 
                 <!-- Sales Input -->
-                <div class="mb-3">
-                    <input type="number" class="form-control text-left" placeholder="Enter Shop Sales Amount" formControlName="sales">
+                <div class="mb-4">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Shop Sales Amount</mat-label>
+                        <input matInput type="number" formControlName="sales" placeholder="Enter amount">
+                        <mat-error *ngIf="shopSalesForm.get('sales')?.invalid && shopSalesForm.get('sales')?.touched">
+                            Please enter a valid sales amount
+                        </mat-error>
+                    </mat-form-field>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="button" class="btn btn-outline-secondary w-100 mb-5" [disabled]="!shopSalesForm.valid" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                    <i class="bi bi-save me-1"></i> Save Shop Sales
-                    </button>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="shopSalesForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                        <span *ngIf="!isSubmitting">
+                        <i class="bi bi-save me-2"></i>Save Shop Sales
+                        </span>
+                        <span *ngIf="isSubmitting">
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                       Saving data...
+                        </span>
+                  </button>
+                </div>
+
 
             </form>
         </div>
+
     </div>
 </div>
 

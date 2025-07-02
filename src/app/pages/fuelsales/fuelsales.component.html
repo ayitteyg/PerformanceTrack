@@ -1,5 +1,5 @@
 <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light mt-5">
-    <div class="card border-0 shadow-lg rounded-4" style="width: 100%; max-width: 600px;" data-aos="fade-up" data-aos-duration="500">
+    <div class="card border-0 shadow-lg rounded-4" style="width: 100%; max-width: 800px;" data-aos="fade-up" data-aos-duration="500">
         <div class="card-body p-5">
             <!-- Header with logo and title -->
             <div class="text-center mb-4">
@@ -48,35 +48,53 @@
 
 
                 <!-- Date Picker -->
+
+
+                <!-- Date Field -->
                 <div class="mb-4">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Date</mat-label>
+                        <input id="salesDate" matInput [matDatepicker]="picker" formControlName="date" [max]="today">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="isFieldInvalid('date')">
+                            Please select a valid date
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- <div class="mb-4">
                     <label for="salesDate" class="form-label small  text-muted">Date</label>
                     <input id="salesDate" type="date" class="form-control form-control-lg" formControlName="date" [max]="today" [class.is-invalid]="isFieldInvalid('date')">
                     <div class="invalid-feedback" *ngIf="isFieldInvalid('date')">
                         Please select a valid date
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Sales Inputs -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
-                        <label for="pmsSales" class="form-label small  text-muted">PMS (Liters)</label>
+                        <!-- <label for="pmsSales" class="form-label small  text-muted">PMS (Liters)</label> -->
                         <div class="input-group">
+                            <span class="input-group-text">PMS</span>
                             <input id="pmsSales" type="number" class="form-control form-control-lg" formControlName="pms_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('pms_sales')">
                             <span class="input-group-text">L</span>
                         </div>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="dxSales" class="form-label small text-muted">DX (Liters)</label>
+                        <!-- <label for="dxSales" class="form-label small text-muted">DX (Liters)</label> -->
                         <div class="input-group">
+                            <span class="input-group-text">DX</span>
                             <input id="dxSales" type="number" class="form-control form-control-lg" formControlName="dx_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('dx_sales')">
                             <span class="input-group-text">L</span>
                         </div>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="vpSales" class="form-label small  text-muted">VP (Liters)</label>
+                        <!-- <label for="vpSales" class="form-label small  text-muted">VP (Liters)</label> -->
                         <div class="input-group">
+                            <span class="input-group-text">VP</span>
                             <input id="vpSales" type="number" class="form-control form-control-lg" formControlName="vp_sales" placeholder="0.00" step="0.01" min="0" [class.is-invalid]="isFieldInvalid('vp_sales')">
                             <span class="input-group-text">L</span>
                         </div>

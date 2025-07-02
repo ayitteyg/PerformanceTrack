@@ -88,6 +88,7 @@ a {
     background-color: #495057;
     border-radius: 5px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .list-group-item i {

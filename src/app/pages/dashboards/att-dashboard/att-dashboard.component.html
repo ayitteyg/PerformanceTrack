@@ -4,7 +4,7 @@
     <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
-    <h5 class="text-muted  p-5"> Preparing Dashboard </h5>
+    <h5 class="text-muted  p-5"> Preapr Dashboard </h5>
 </div>
 
 <div class="container-fluid pt-5  main-outer" *ngIf="!loading && performanceData">
@@ -26,28 +26,7 @@
             </div>
         </div>
 
-        <!-- POINTS CARD -->
-        <div class="col-lg-4  col-sm-12 mb-3">
-            <div class="col-12" data-aos="fade-right" data-aos-duration="4000">
-                <div class="card shadow card0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Total Score / <a style="color:brown">300</a></h5>
 
-                        <div style="width: 150px; height: 120px; margin: auto;">
-                            <ng-container *ngIf="getTotalRawScore() !== null; else loading">
-                                <circle-progress [percent]="getTotalRawScore()||0" [radius]="30" [outerStrokeWidth]="6" [innerStrokeWidth]="4" [outerStrokeColor]="'#ca6f1e'" [innerStrokeColor]="'#C7E896'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="''" [showSubtitle]="false"
-                                    [showBackground]="false" [responsive]="true" [startFromZero]="false">
-                                </circle-progress>
-                            </ng-container>
-
-                            <ng-template #loading>
-                                <p>Loading total score...</p>
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- OVERAL SCORE CARD -->
         <div class="col-lg-4  col-sm-12">
@@ -68,6 +47,30 @@
                             </ng-template>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- POINTS CARD -->
+        <div class="col-lg-4  col-sm-12 mb-3">
+            <div class="col-12" data-aos="fade-right" data-aos-duration="4000">
+                <div class="card shadow card0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Score / <a style="color:brown">300</a></h5>
+
+                        <div style="width: 150px; height: 120px; margin: auto;">
+                            <ng-container *ngIf="getTotalRawScore() !== null; else loading">
+                                <circle-progress [percent]="getTotalRawScore()||0" [radius]="30" [outerStrokeWidth]="6" [innerStrokeWidth]="4" [outerStrokeColor]="'#ca6f1e'" [innerStrokeColor]="'#C7E896'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="''" [showSubtitle]="false"
+                                    [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                </circle-progress>
+                            </ng-container>
+
+                            <ng-template #loading>
+                                <p>Loading total score...</p>
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
             </div>

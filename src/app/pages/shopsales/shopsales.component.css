@@ -12,9 +12,9 @@ a {
 }
 
 .shop-card {
-    width: 100%;
+    width: 90%;
     width: 700px;
-    min-height: 450px;
+    /* min-height: 450px; */
 }
 
 .shop-card input {
